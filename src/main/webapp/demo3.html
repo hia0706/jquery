@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+  <style type="text/css">
+    div {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>선택자 연습</h1>
+
+<div id="box-1">
+  <p>연습1111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습1222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습1333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습1444입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+</div>
+<div id="box-2">
+  <p>연습2111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습2222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습2333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습2444입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+</div>
+<div id="box-3">
+  <p>연습입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습3111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습3222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+  <p>연습3333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+</div>
+</body>
+<script type="text/javascript">
+  $(function() {
+    // box-1의 첫번째 p의 색을 변경하자
+    $('#box-1 p:first').css('color', 'red');
+    $('#box-1 p:first-child').css('color', 'red');
+    $('#box-1 p:nth-child(1)').css('color', 'red');
+    $('#box-1 p:eq(0)').css('color', 'red');
+
+    // 하면 안되는 행동
+    // $('p:first').css('color', 'blue');
+    // $('#p:first-child').css('color', 'red');
+    // $('p:nth-child(1)').css('color', 'red');
+    // $('p:eq(0)').css('color', 'red');
+
+    // box-2의 두번재 p의 내용을 변경하자
+    $("#box-2 p:eq(1)").text("내용을 바꾸자");
+
+    // box-3의 맨 마지막 p의 내용을 변경하자
+    $("#box-3 p:last").text("내용을 변경하자");
+  })
+</script>
+</html>

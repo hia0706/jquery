@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>선택자 연습</h1>
+
+    <div>
+        <p>연습1111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습1222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습1333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습1444입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+    </div>
+    <div>
+        <p>연습2111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습2222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습2333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습2444입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+    </div>
+    <div>
+        <p>연습입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습3111입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습3222입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+        <p>연습3333입니다. 연습1입니다. 연습1입니다. 연습1입니다.</p>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $("p:first").css('color', 'red');
+        $("p:first-child").css('background-color', 'lightgreen');
+        $('p:nth-child(2)').css('background-color', 'yellow');
+    })
+</script>
+</html>
