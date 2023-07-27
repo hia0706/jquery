@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../resources/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>이벤트 핸들러 함수 등록하기</h1>
+
+    <h3>인라인 이벤트 핸들러</h3>
+    <button id="btn-1" onclick="fn1()">버튼1</button>
+
+    <h3>엘리먼트객체의 이벤트프로퍼티 등록방식</h3>
+    <button id="btn-2">버튼2</button>
+
+    <h3>addEventListener 등록방식</h3>
+    <button id="btn-3">버튼3</button>
+
+    <h3><b>jQuery 이벤트 등록방식</b></h3>
+    <button id="btn-4">버튼4</button>
+    <button id="btn-5">버튼5</button>
+    <button id="btn-6">버튼6</button>
+    
+    <h3>jQuery 이벤트 일괄 등록하기</h3>
+    <div>
+        <input type="text" value="100" />
+        <button class="btn" id="btn-7">버튼7</button>
+    </div>
+    <div>
+        <input type="text" value="200" />
+        <button class="btn" id="btn-8">버튼8</button>
+    </div>
+    <div>
+        <input type="text" value="300" />
+        <button class="btn" id="btn-9">버튼9</button>
+    </div>
+    <div>
+        <input type="text" value="400" />
+        <button class="btn" id="btn-10">버튼10</button>
+    </div>
+
+
+<script type="text/javascript">
+function fn1() {
+    alert('실행');
+}
+
+// 이벤트 프로퍼티 등록방식
+let btn2 = document.getElementById("btn-2");
+btn2.onclick = function () {
+    alert("실행");
+}
+
+// addEventListener 등록방식
+let btn3 = document.querySelector("#btn-3");
+btn3.addEventListener("click", function () {
+    alert("실행");
+})
+
+// jQuery 등록방식
+// on메소드
+$('#btn-4').on("click", function () {
+    alert("실행");
+})
+// one메소드
+// 딱 한번만 이벤트가 발생한다.
+$('#btn-5').one("click", function () {
+    alert("실행");
+})
+
+// jQuery 이벤트명 등록 방식
+// on메소드와 동일한 방식이다.
+$('#btn-6').click(function () {
+    alert("실행");
+})
+
+// 여러개의 엘리먼트에 이벤트핸들러함수를 한번에 등록하기
+$(".btn").click(function () {
+    // this : 이벤트가 발생한 엘리먼트가 들어있다.
+    // jQuery 변수명 관례
+    // jQuery집합객체를 담는 변수에는 변수명앞에 $를 붙인다. -> let $el = ...
+
+    // this는 클릭한 버튼 엘리먼트객체다.
+    // $(this)는 클릭한 버튼 엘리먼트객체가 포함된 jQuery 집합객체다.
+    // $(this).prev()는 클릭한 버튼 엘리먼트 객체가 포함된 jQuery집합객체의 prev()메소드를
+    // 실행해서 획득한 객체가 포함되어 있는 jQuery집합객체다.
+    // console.log(this); // 엘리먼트가  표시
+    // console.log($(this)); // 객체가 표시
+    let $input = $(this).prev(); // input 은 jQeury의 집합객체
+    console.log($input);
+
+    let currentValue = $input.val();
+    console.log('현재값', currentValue);
+
+    $input.val(parseInt(currentValue) + 1);
+
+})
+
+</script>
+</body>
+</html>
