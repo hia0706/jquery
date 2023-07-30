@@ -9,3 +9,8 @@ S
 #src/main/webapp/selector/demo3.html,8\7\87a3830be5c0e67a3aa0d458c63f6ce085fe4016
 S
 #src/main/webapp/selector/demo1.html,d\c\dc427d2b2554281017a1f8f01c19fa69c07248fb
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
