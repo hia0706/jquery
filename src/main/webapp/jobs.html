@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>애플리케이션</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-12">
+            <h1>직종관리</h1>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">직종 목록</div>
+                <div class="card-body">
+                    <div class="list-group overflow-y-auto" style="height: 600px;" id="job-list-group">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">직종정보</div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th style="width: 20%;">직종아이디</th>
+                                <td style="width: 80%;"></td>
+                            </tr>
+                            <tr>
+                                <th>직종 제목</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>최소급여</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>최대급여</th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(() => {
+
+        // 웹페이지의 HTML DOM객체가 준비되면 REST API를 제공하는 서버에 직종목록을 요청한다.
+        $.getJSON('http://localhost:81/jobs', function(jobs) {
+            /*
+                jobs에는 서버가 응답으로 보낸 json텍스트를 javascript 배열 혹은 객체로 변환된 것이 전달된다.
+
+                jobs -> [{id:xxx, title:xxx, minSalary:xxx, maxSalary:xxx}, { ... }, { ... }]
+             */
+            // 배열객체.forEach()는 지정된 함수를 배열의 데이터 개수만큼 실행한다.
+            // 지정된 함수를 실행할 때 마다 배열의 0번째, 1번째, 2번째, ... 데이터가 함수의 매개변수로 전달된다.
+
+            // 직종항목을 추가할 div엘리먼트를 선택한다.
+            // $jobListGroup변수에는 선택된 div 엘리먼트가 포함된 jQuery집합객체가 대입된다.
+            let $jobListGroup = $('#job-list-group');
+            // 배열의 forEach()메소드를 실행해서 jobs배열의 데이터를 반복처리한다.
+            jobs.forEach(function(job, index) {
+                // listGroup에 추가할 list-group-item html 컨텐츠를 생성한다.
+                let content = `
+                    <a href="" data-job-id="${job.id}"
+                        class="list-group-item list-group-item-action">${job.id}</a>
+                `;
+
+                // append 계속 추가한다는 뜻!
+                $jobListGroup.append(content);
+            });
+        });
+
+        // 웹 페이지 로딩시 새로 추가된 list-group-item 항목을 클릭했을 때 실행할 이벤트핸들러 함수 등록
+        $('#job-list-group').on('click', ".list-group-item", function(event) {
+            event.preventDefault();
+
+            let jobId = $(this).attr("data-job-id");
+            // alert(jobId);
+            $.getJSON(`http://localhost:81/jobs/${jobId}`, function(job) {
+                console.log(job);
+            })
+        });
+    })
+</script>
+</body>
+</html>
